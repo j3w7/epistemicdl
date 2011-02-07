@@ -1,0 +1,13 @@
+package org.semanticweb.owlapi.model;
+
+
+/**
+ * Author: Anees ul Mehdi<br>
+ * Karlsruhe Institute of Technology<br>
+ * AIRB<br>
+ * Date: 09-Nov-2010<br><br>
+ */
+public interface OWLObjectEpistemicOf extends OWLBooleanClassExpression {
+
+    OWLClassExpression getOperand();
+}
