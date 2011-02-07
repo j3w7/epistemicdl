@@ -1,0 +1,74 @@
+package uk.ac.manchester.cs.owl.owlapi;
+
+import org.semanticweb.owlapi.model.*;
+
+
+
+/**
+ * Author: Anees ul Mehdi<br>
+ * Karlsruhe Institute of Technology<br>
+ * AIRB<br>
+ * Date: 09-Nov-2010<br><br>
+ */
+public class OWLObjectEpistemicOfImpl extends OWLAnonymousClassExpressionImpl implements OWLObjectComplementOf {
+
+    private OWLClassExpression operand;
+
+
+    public OWLObjectEpistemicOfImpl(OWLDataFactory dataFactory, OWLClassExpression operand) {
+        super(dataFactory);
+        this.operand = operand;
+    }
+
+    /**
+     * Gets the class expression type for this class expression
+     * @return The class expression type
+     */
+    public ClassExpressionType getClassExpressionType() {
+        return ClassExpressionType.OBJECT_COMPLEMENT_OF;
+    }
+
+    public boolean isClassExpressionLiteral() {
+        return !operand.isAnonymous();
+    }
+
+
+    public OWLClassExpression getOperand() {
+        return operand;
+    }
+
+
+    public boolean equals(Object obj) {
+        if (super.equals(obj)) {
+            if (!(obj instanceof OWLObjectComplementOf)) {
+                return false;
+            }
+            return ((OWLObjectComplementOf) obj).getOperand().equals(operand);
+        }
+        return false;
+    }
+
+
+    public void accept(OWLClassExpressionVisitor visitor) {
+        visitor.visit(this);
+    }
+
+
+    public void accept(OWLObjectVisitor visitor) {
+        visitor.visit(this);
+    }
+
+    public <O> O accept(OWLClassExpressionVisitorEx<O> visitor) {
+        return visitor.visit(this);
+    }
+
+
+    public <O> O accept(OWLObjectVisitorEx<O> visitor) {
+        return visitor.visit(this);
+    }
+
+    protected int compareObjectOfSameType(OWLObject object) {
+        OWLObjectComplementOf other = (OWLObjectComplementOf) object;
+        return operand.compareTo(other.getOperand());
+    }
+}
