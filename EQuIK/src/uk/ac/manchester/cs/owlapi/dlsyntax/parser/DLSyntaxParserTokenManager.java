@@ -1023,7 +1023,7 @@ public DLSyntaxParserTokenManager(SimpleCharStream stream, int lexState){
    SwitchTo(lexState);
 }
 
-/** Reinitialise parser. */
+/** Reinitialise equik.parser. */
 public void ReInit(SimpleCharStream stream)
 {
    jjmatchedPos = jjnewStateCnt = 0;
@@ -1039,7 +1039,7 @@ private void ReInitRounds()
       jjrounds[i] = 0x80000000;
 }
 
-/** Reinitialise parser. */
+/** Reinitialise equik.parser. */
 public void ReInit(SimpleCharStream stream, int lexState)
 {
    ReInit(stream);

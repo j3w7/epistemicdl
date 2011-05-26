@@ -1,14 +1,14 @@
-package org.coode.owlapi.manchesterowlsyntax;
+package equik.parser;
 
-
-import org.semanticweb.owlapi.expression.OWLEntityChecker;
-import org.semanticweb.owlapi.expression.OWLExpressionParser;
-import org.semanticweb.owlapi.expression.ParserException;
 import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.expression.OWLExpressionParser;
+import org.semanticweb.owlapi.expression.OWLEntityChecker;
+import org.semanticweb.owlapi.expression.ParserException;
+import org.semanticweb.owlapi.expression.OWLOntologyChecker;
 
-import java.util.Set;
-/*
- * Copyright (C) 2007, University of Manchester
+import java.util.Set;/*
+ * Copyright (C) 2008, University of Manchester
  *
  * Modifications to the initial code base are copyright of their
  * respective authors, or their employers as appropriate.  Authorship
@@ -30,23 +30,21 @@ import java.util.Set;
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-
 /**
- * Author: Matthew Horridge<br>
- * The University Of Manchester<br>
- * Bio-Health Informatics Group<br>
- * Date: 13-Sep-2007<br><br>
- *
- * An expression equik.parser that parses a Manchester OWL Syntax Class Frame to produce a
- * set of axioms that represent the class frame.
+ * Author: Matthew Horridge<br> The University of Manchester<br> Information Management Group<br>
+ * Date: 05-Feb-2009
  */
-public class ManchesterOWLSyntaxClassFrameParser implements OWLExpressionParser<Set<OntologyAxiomPair>> {
+public class EMSyntaxFramesParser implements OWLExpressionParser<Set<OntologyAxiomPair>> {
 
     private OWLDataFactory dataFactory;
 
     private OWLEntityChecker checker;
 
-    public ManchesterOWLSyntaxClassFrameParser(OWLDataFactory dataFactory, OWLEntityChecker checker) {
+    private OWLOntologyChecker ontologyChecker;
+
+    private OWLOntology defaultOntology;
+
+    public EMSyntaxFramesParser(OWLDataFactory dataFactory, OWLEntityChecker checker) {
         this.dataFactory = dataFactory;
         this.checker = checker;
     }
@@ -56,10 +54,19 @@ public class ManchesterOWLSyntaxClassFrameParser implements OWLExpressionParser<
         this.checker = entityChecker;
     }
 
+    public void setOWLOntologyChecker(OWLOntologyChecker ontologyChecker) {
+        this.ontologyChecker = ontologyChecker;
+    }
+
+    public void setDefaultOntology(OWLOntology ontology) {
+        this.defaultOntology = ontology;
+    }
 
     public Set<OntologyAxiomPair> parse(String expression) throws ParserException {
-        ManchesterOWLSyntaxEditorParser parser = new ManchesterOWLSyntaxEditorParser(dataFactory, expression);
+        EMSyntaxEditorParser parser = new EMSyntaxEditorParser(dataFactory, expression);
         parser.setOWLEntityChecker(checker);
-        return parser.parseClassFrameEOF();
+        parser.setDefaultOntology(defaultOntology);
+        parser.setOWLOntologyChecker(ontologyChecker);
+        return parser.parseFrames();
     }
 }

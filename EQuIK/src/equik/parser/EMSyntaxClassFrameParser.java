@@ -1,12 +1,12 @@
-package org.coode.owlapi.manchesterowlsyntax;
+package equik.parser;
 
 
 import org.semanticweb.owlapi.expression.OWLEntityChecker;
 import org.semanticweb.owlapi.expression.OWLExpressionParser;
 import org.semanticweb.owlapi.expression.ParserException;
 import org.semanticweb.owlapi.model.OWLDataFactory;
-import org.semanticweb.owlapi.model.OWLClassExpression;
 
+import java.util.Set;
 /*
  * Copyright (C) 2007, University of Manchester
  *
@@ -37,28 +37,29 @@ import org.semanticweb.owlapi.model.OWLClassExpression;
  * Bio-Health Informatics Group<br>
  * Date: 13-Sep-2007<br><br>
  *
- * An expression equik.parser that parses class expressions written in the Manchester OWL Syntax
+ * An expression equik.parser that parses a Manchester OWL Syntax Class Frame to produce a
+ * set of axioms that represent the class frame.
  */
-public class ManchesterOWLSyntaxClassExpressionParser implements OWLExpressionParser<OWLClassExpression> {
+public class EMSyntaxClassFrameParser implements OWLExpressionParser<Set<OntologyAxiomPair>> {
 
     private OWLDataFactory dataFactory;
 
     private OWLEntityChecker checker;
 
-    public ManchesterOWLSyntaxClassExpressionParser(OWLDataFactory dataFactory, OWLEntityChecker checker) {
+    public EMSyntaxClassFrameParser(OWLDataFactory dataFactory, OWLEntityChecker checker) {
         this.dataFactory = dataFactory;
         this.checker = checker;
     }
 
 
-    public OWLClassExpression parse(String expression) throws ParserException {
-        ManchesterOWLSyntaxEditorParser parser = new ManchesterOWLSyntaxEditorParser(dataFactory, expression);
-        parser.setOWLEntityChecker(checker);
-        return parser.parseClassExpression();
+    public void setOWLEntityChecker(OWLEntityChecker entityChecker) {
+        this.checker = entityChecker;
     }
 
 
-    public void setOWLEntityChecker(OWLEntityChecker checker) {
-        this.checker = checker;
+    public Set<OntologyAxiomPair> parse(String expression) throws ParserException {
+        EMSyntaxEditorParser parser = new EMSyntaxEditorParser(dataFactory, expression);
+        parser.setOWLEntityChecker(checker);
+        return parser.parseClassFrameEOF();
     }
 }

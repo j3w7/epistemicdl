@@ -79,8 +79,8 @@ public abstract class RDFOntologyFormat extends PrefixOWLOntologyFormat {
     }
 
     /**
-     * Gets the parser meta data for the ontology that this format relates to.
-     * @return The parser metadata for the ontology that this format relates to.  If the ontology was not created
+     * Gets the equik.parser meta data for the ontology that this format relates to.
+     * @return The equik.parser metadata for the ontology that this format relates to.  If the ontology was not created
      *         by parsing an ontology document then this method will return <code>null</code>.
      */
     public ParserMetaData getParserMetaData() {
@@ -88,8 +88,8 @@ public abstract class RDFOntologyFormat extends PrefixOWLOntologyFormat {
     }
 
     /**
-     * Sets the parser meta data for the ontology that this format relates to.
-     * @param parserMetaData The parser meta data.  May be <code>null</code> to indicate that no parser meta data
+     * Sets the equik.parser meta data for the ontology that this format relates to.
+     * @param parserMetaData The equik.parser meta data.  May be <code>null</code> to indicate that no equik.parser meta data
      *                       is available.
      */
     public void setParserMetaData(ParserMetaData parserMetaData) {

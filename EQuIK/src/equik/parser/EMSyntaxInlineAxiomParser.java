@@ -1,14 +1,12 @@
-package org.coode.owlapi.manchesterowlsyntax;
+package equik.parser;
 
-
-import org.semanticweb.owlapi.expression.OWLEntityChecker;
-import org.semanticweb.owlapi.expression.OWLExpressionParser;
-import org.semanticweb.owlapi.expression.ParserException;
+import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLDataFactory;
-import org.semanticweb.owlapi.model.OWLClassExpression;
-
+import org.semanticweb.owlapi.expression.OWLExpressionParser;
+import org.semanticweb.owlapi.expression.OWLEntityChecker;
+import org.semanticweb.owlapi.expression.ParserException;
 /*
- * Copyright (C) 2007, University of Manchester
+ * Copyright (C) 2009, University of Manchester
  *
  * Modifications to the initial code base are copyright of their
  * respective authors, or their employers as appropriate.  Authorship
@@ -30,35 +28,34 @@ import org.semanticweb.owlapi.model.OWLClassExpression;
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-
 /**
  * Author: Matthew Horridge<br>
- * The University Of Manchester<br>
- * Bio-Health Informatics Group<br>
- * Date: 13-Sep-2007<br><br>
- *
- * An expression equik.parser that parses class expressions written in the Manchester OWL Syntax
+ * The University of Manchester<br>
+ * Information Management Group<br>
+ * Date: 13-May-2009
  */
-public class ManchesterOWLSyntaxClassExpressionParser implements OWLExpressionParser<OWLClassExpression> {
+public class EMSyntaxInlineAxiomParser implements OWLExpressionParser<OWLAxiom> {
 
     private OWLDataFactory dataFactory;
 
     private OWLEntityChecker checker;
 
-    public ManchesterOWLSyntaxClassExpressionParser(OWLDataFactory dataFactory, OWLEntityChecker checker) {
+
+    public EMSyntaxInlineAxiomParser(OWLDataFactory dataFactory,
+                                                OWLEntityChecker checker) {
         this.dataFactory = dataFactory;
         this.checker = checker;
     }
 
 
-    public OWLClassExpression parse(String expression) throws ParserException {
-        ManchesterOWLSyntaxEditorParser parser = new ManchesterOWLSyntaxEditorParser(dataFactory, expression);
-        parser.setOWLEntityChecker(checker);
-        return parser.parseClassExpression();
+    public void setOWLEntityChecker(OWLEntityChecker entityChecker) {
+        this.checker = entityChecker;
     }
 
 
-    public void setOWLEntityChecker(OWLEntityChecker checker) {
-        this.checker = checker;
+    public OWLAxiom parse(String expression) throws ParserException {
+        EMSyntaxEditorParser parser = new EMSyntaxEditorParser(dataFactory, expression);
+        parser.setOWLEntityChecker(checker);
+        return parser.parseAxiom();
     }
 }

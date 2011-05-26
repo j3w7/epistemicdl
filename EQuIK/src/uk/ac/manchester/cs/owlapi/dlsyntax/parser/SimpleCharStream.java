@@ -9,7 +9,7 @@ package uk.ac.manchester.cs.owlapi.dlsyntax.parser;
 
 public class SimpleCharStream
 {
-/** Whether parser is static. */
+/** Whether equik.parser is static. */
   public static final boolean staticFlag = false;
   int bufsize;
   int available;
