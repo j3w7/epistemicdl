@@ -1,5 +1,6 @@
 package equik.test;
 
+import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
 
 import org.junit.Before;
@@ -7,14 +8,12 @@ import org.junit.Test;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.expression.OWLEntityChecker;
 import org.semanticweb.owlapi.expression.ParserException;
-import org.semanticweb.owlapi.model.IRI;
+import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
-import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 
 import equik.parser.EMSyntaxClassExpressionParser;
-import equik.parser.EMSyntaxEditorParser;
 
 public class EMSyntaxTest {
 
@@ -25,40 +24,41 @@ public class EMSyntaxTest {
 	public void init() throws OWLOntologyCreationException {
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		dataFactory = manager.getOWLDataFactory();
-		EMSyntaxEditorParser editorParser = new EMSyntaxEditorParser(
-				dataFactory, "");
-
-		OWLOntology testOntology = manager.createOntology();
-
-		manager.addAxiom(testOntology, dataFactory
-				.getOWLDeclarationAxiom(dataFactory.getOWLClass(IRI
-						.create("http://www.example.com#Man"))));
-		manager.addAxiom(testOntology, dataFactory
-				.getOWLDeclarationAxiom(dataFactory.getOWLObjectProperty(IRI
-						.create("http://www.example.com#hasChild"))));
-
-		editorParser.setDefaultOntology(testOntology);
-
-		checker = editorParser.getOWLEntityChecker();
+		checker = new TestEntityChecker(dataFactory, "http://www.example.com#");
 	}
 
-	@Test
-	public void parseEpistemicRoleExpression() {
+	private void check(String toParse, String expectedParseResult) {
 		EMSyntaxClassExpressionParser parser = new EMSyntaxClassExpressionParser(
 				dataFactory, checker);
+
+		OWLClassExpression desc = null;
 		try {
-			parser.parse("<http://www.example.com#hasChild> some Man");
-			// parser.parse("hasChild some Man");
+			desc = parser.parse(toParse);
 		} catch (ParserException e) {
 			e.printStackTrace();
 			assertTrue(false);
 		}
+
+		System.out.println(desc);
+		assertEquals(desc.toString(), expectedParseResult);
+	}
+
+	@Test
+	public void parseNonEpistemicClassExpression() {
+		check("hasChild some Man",
+				"ObjectSomeValuesFrom(<http://www.example.com#hasChild> <http://www.example.com#Man>)");
+	}
+
+	//@Test
+	public void parseEpistemicRoleExpression() {
+		check("hasChild some (KnownConcept Man)",
+				"ObjectSomeValuesFrom(<http://www.example.com#hasChild> ObjectEpistemicConcept(<http://www.example.com#Man>))");
 	}
 
 	@Test
 	public void parseEpistemicConceptExpression() {
-		assertTrue(false);
-
+		check("(KR hasChild) some Man",
+		"ObjectSomeValuesFrom(<http://www.example.com#hasChild> ObjectEpistemicConcept(<http://www.example.com#Man>))");
 	}
 
 }
