@@ -40,8 +40,8 @@ import java.util.regex.Pattern;
  * Author: Matthew Horridge<br> The University Of Manchester<br> Bio-Health Informatics Group<br> Date:
  * 10-Sep-2007<br><br>
  * <p/>
- * A parser for the Manchester OWL Syntax. All properties must be defined before they are used.  For example, consider
- * the restriction hasPart some Leg.  The parser must know in advance whether or not hasPart is an object property or a
+ * A equik.parser for the Manchester OWL Syntax. All properties must be defined before they are used.  For example, consider
+ * the restriction hasPart some Leg.  The equik.parser must know in advance whether or not hasPart is an object property or a
  * data property so that Leg gets parsed correctly.  In a tool, such as an editor, it is expected that hasPart will
  * already exists as either a data property or an object property.  If a complete ontology is being parsed, it is
  * expected that hasPart will have been defined at the top of the file before it is used in any class expressions or
@@ -49,11 +49,11 @@ import java.util.regex.Pattern;
  */
 public class ManchesterOWLSyntaxEditorParser {
 
-    // This parser was built by hand!  After stuggling with terrible
+    // This equik.parser was built by hand!  After stuggling with terrible
     // error messages produced by ANTLR (or JavaCC) I decides to construct
-    // this parser by hand.  The error messages that this parser generates
+    // this equik.parser by hand.  The error messages that this equik.parser generates
     // are specific to the Manchester OWL Syntax and are such that it should
-    // be easy to use this parser in tools such as editors.
+    // be easy to use this equik.parser in tools such as editors.
 
     private OWLDataFactory dataFactory;
 

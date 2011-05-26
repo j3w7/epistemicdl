@@ -1839,7 +1839,7 @@ public class KRSS2ParserTokenManager implements KRSS2ParserConstants {
     }
 
     /**
-     * Reinitialise parser.
+     * Reinitialise equik.parser.
      */
     public void ReInit(SimpleCharStream stream) {
         jjmatchedPos = jjnewStateCnt = 0;
@@ -1856,7 +1856,7 @@ public class KRSS2ParserTokenManager implements KRSS2ParserConstants {
     }
 
     /**
-     * Reinitialise parser.
+     * Reinitialise equik.parser.
      */
     public void ReInit(SimpleCharStream stream, int lexState) {
         ReInit(stream);

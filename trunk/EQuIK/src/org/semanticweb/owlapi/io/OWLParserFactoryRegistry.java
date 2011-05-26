@@ -34,7 +34,7 @@ import java.util.List;
  * Date: 15-Nov-2006<br><br>
  * <p/>
  * The <code>OWLParserFactoryRegistry</code> provides a central point for
- * the registration of parser factories that create parsers to parse OWL
+ * the registration of equik.parser factories that create parsers to parse OWL
  * ontologies.  The registry is typically used by at least one type of ontology
  * factory for loading ontologies whose concrete representations are contained
  * in some kind of document.

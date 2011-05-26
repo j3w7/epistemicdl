@@ -140,8 +140,8 @@ public class ParsableOWLOntologyFactory extends AbstractInMemOWLOntologyFactory 
     public OWLOntology loadOWLOntology(OWLOntologyDocumentSource documentSource, final OWLOntologyCreationHandler mediator) throws OWLOntologyCreationException {
         // Attempt to parse the ontology by looping through the parsers.  If the
         // ontology is parsed successfully then we break out and return the ontology.
-        // I think that this is more reliable than selecting a parser based on a file extension
-        // for example (perhaps the parser list could be ordered based on most likely parser, which
+        // I think that this is more reliable than selecting a equik.parser based on a file extension
+        // for example (perhaps the equik.parser list could be ordered based on most likely equik.parser, which
         // could be determined by file extension).
         Map<OWLParser, OWLParserException> exceptions = new LinkedHashMap<OWLParser, OWLParserException>();
         // Call the super method to create the ontology - this is needed, because
@@ -191,7 +191,7 @@ public class ParsableOWLOntologyFactory extends AbstractInMemOWLOntologyFactory 
         if (existingOntology == null) {
             getOWLOntologyManager().removeOntology(ont);
         }
-        // We haven't found a parser that could parse the ontology properly.  Throw an
+        // We haven't found a equik.parser that could parse the ontology properly.  Throw an
         // exception whose message contains the stack traces from all of the parsers
         // that we have tried.
         throw new UnparsableOntologyException(documentSource.getDocumentIRI(), exceptions);

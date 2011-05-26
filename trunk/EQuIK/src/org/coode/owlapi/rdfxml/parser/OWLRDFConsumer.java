@@ -45,17 +45,17 @@ import java.util.logging.Logger;
  * The University Of Manchester<br>
  * Bio-Health Informatics Group<br>
  * Date: 07-Dec-2006<br><br>
- * A parser/interpreter for an RDF graph which represents an OWL ontology.  The
+ * A equik.parser/interpreter for an RDF graph which represents an OWL ontology.  The
  * consumer interprets triple patterns in the graph to produce the appropriate
  * OWLAPI entities, class expressions and axioms.
- * The parser is based on triple handlers.  A given triple handler handles a specific
+ * The equik.parser is based on triple handlers.  A given triple handler handles a specific
  * type of triple.  Generally speaking this is based on the predicate of a triple, for
  * example, A rdfs:subClassOf B is handled by a subClassOf handler.  A handler determines
  * if it can handle a triple in a streaming mode (i.e. while parsing is taking place) or
  * if it can handle a triple after parsing has taken place and the complete graph is in
  * memory.  Once a handler handles a triple, that triple is deemed to have been consumed
  * an is discarded.
- * The parser attempts to consume as many triples as possible while streaming parsing
+ * The equik.parser attempts to consume as many triples as possible while streaming parsing
  * is taking place. Whether or not a triple can be consumed dIRIng parsing is determined
  * by installed triple handlers.
  */

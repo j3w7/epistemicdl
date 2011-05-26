@@ -1,6 +1,12 @@
-package org.semanticweb.owlapi.expression;
+package equik.parser;
 
+
+import org.semanticweb.owlapi.expression.OWLEntityChecker;
+import org.semanticweb.owlapi.expression.OWLExpressionParser;
+import org.semanticweb.owlapi.expression.ParserException;
+import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLClassExpression;
+
 /*
  * Copyright (C) 2007, University of Manchester
  *
@@ -29,10 +35,30 @@ import org.semanticweb.owlapi.model.OWLClassExpression;
  * Author: Matthew Horridge<br>
  * The University Of Manchester<br>
  * Bio-Health Informatics Group<br>
- * Date: 28-Nov-2007<br><br>
+ * Date: 13-Sep-2007<br><br>
  *
- * An expression equik.parser that parses expressions that correspond to class expressions.
+ * An expression equik.parser that parses class expressions written in the Manchester OWL Syntax
  */
-public interface OWLClassExpressionParser extends OWLExpressionParser<OWLClassExpression> {
+public class EMSyntaxClassExpressionParser implements OWLExpressionParser<OWLClassExpression> {
 
+    private OWLDataFactory dataFactory;
+
+    private OWLEntityChecker checker;
+
+    public EMSyntaxClassExpressionParser(OWLDataFactory dataFactory, OWLEntityChecker checker) {
+        this.dataFactory = dataFactory;
+        this.checker = checker;
+    }
+
+
+    public OWLClassExpression parse(String expression) throws ParserException {
+        EMSyntaxEditorParser parser = new EMSyntaxEditorParser(dataFactory, expression);
+        parser.setOWLEntityChecker(checker);
+        return parser.parseClassExpression();
+    }
+
+
+    public void setOWLEntityChecker(OWLEntityChecker checker) {
+        this.checker = checker;
+    }
 }

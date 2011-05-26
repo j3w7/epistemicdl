@@ -104,7 +104,7 @@ public class OWLXMLParserHandler extends DefaultHandler {
      * imported ontologies etc.
      * @param ontology The ontology object that the XML representation should be parsed into.
      * @param topHandler The handler for top level elements - may be <code>null</code>, in which
-     * case the parser will expect an Ontology element to be the root element.
+     * case the equik.parser will expect an Ontology element to be the root element.
      */
     public OWLXMLParserHandler(OWLOntologyManager owlOntologyManager, OWLOntology ontology, OWLElementHandler topHandler) {
         this.owlOntologyManager = owlOntologyManager;
@@ -651,7 +651,7 @@ public class OWLXMLParserHandler extends DefaultHandler {
 
 
     /**
-     * Gets the line number that the parser is at.
+     * Gets the line number that the equik.parser is at.
      *
      * @return A positive integer that represents the line number or
      *         -1 if the line number is not known.

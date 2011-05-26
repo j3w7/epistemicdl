@@ -1,6 +1,8 @@
-package org.semanticweb.owlapi.expression;
+package equik.parser;
 
-import org.semanticweb.owlapi.model.OWLClassExpression;
+import org.semanticweb.owlapi.io.OWLParser;
+import org.semanticweb.owlapi.io.OWLParserFactory;
+import org.semanticweb.owlapi.model.OWLOntologyManager;
 /*
  * Copyright (C) 2007, University of Manchester
  *
@@ -29,10 +31,12 @@ import org.semanticweb.owlapi.model.OWLClassExpression;
  * Author: Matthew Horridge<br>
  * The University Of Manchester<br>
  * Bio-Health Informatics Group<br>
- * Date: 28-Nov-2007<br><br>
- *
- * An expression equik.parser that parses expressions that correspond to class expressions.
+ * Date: 13-Aug-2007<br><br>
  */
-public interface OWLClassExpressionParser extends OWLExpressionParser<OWLClassExpression> {
+public class EMSyntaxParserFactory implements OWLParserFactory {
 
+
+    public OWLParser createParser(OWLOntologyManager owlOntologyManager) {
+        return new EMSyntaxOntologyParser();
+    }
 }

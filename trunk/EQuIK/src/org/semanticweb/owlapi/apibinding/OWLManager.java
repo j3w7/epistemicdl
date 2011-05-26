@@ -53,7 +53,7 @@ import uk.ac.manchester.cs.owl.owlapi.turtle.parser.TurtleOntologyParserFactory;
  * Date: 06-Dec-2006<br><br>
  * <p/>
  * Provides a point of convenience for creating an <code>OWLOntologyManager</code>
- * with commonly required features (such as an RDF parser for example).
+ * with commonly required features (such as an RDF equik.parser for example).
  */
 public class OWLManager {
 

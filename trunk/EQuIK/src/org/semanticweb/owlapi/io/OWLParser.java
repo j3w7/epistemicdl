@@ -55,7 +55,7 @@ public interface OWLParser {
      * format which was parsed to obtain the ontology. This will never be <code>null</code>.
      * @return The format of the ontology
      * @throws OWLParserException if there was a problem parsing the ontology.  This indicates an error in the syntax
-     * with this ontology document that the parser reads.
+     * with this ontology document that the equik.parser reads.
      * @throws IOException if there was an IOException during parsing
      * @throws OWLOntologyChangeException if there was a problem updating the specified ontology from information
      * that was parsed.
@@ -78,7 +78,7 @@ public interface OWLParser {
      * @return An <code>OWLOntologyFormat</code> which describes the concrete representation
      * format which was parsed to obtain the ontology.
      * @throws OWLParserException if there was a problem parsing the ontology.  This indicates an error in the syntax
-     * with this ontology document that the parser reads.
+     * with this ontology document that the equik.parser reads.
      * @throws IOException if there was an IOException during parsing
      * @throws OWLOntologyChangeException if there was a problem updating the specified ontology from information
      * that was parsed.

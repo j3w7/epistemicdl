@@ -73,7 +73,7 @@ public class OWLParserException extends OWLException {
     }
 
     /**
-     * Gets the line number of the line that the parser
+     * Gets the line number of the line that the equik.parser
      * was parsing when the error occurred.
      * @return A positive integer which represents the line
      * number, or -1 if the line number could not be determined.

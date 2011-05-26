@@ -44,7 +44,7 @@ import java.util.zip.ZipInputStream;
  *
  * A convenience base class for parsers, which provides a mechanism to
  * manage the setting and getting of the <code>OWLOntologyManager</code> that
- * should be associated with the parser
+ * should be associated with the equik.parser
  */
 public abstract class AbstractOWLParser implements OWLParser {
 

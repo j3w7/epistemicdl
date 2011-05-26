@@ -109,7 +109,7 @@ public class TokenMgrError extends Error
     *
     *     "Internal Error : Please file a bug report .... "
     *
-    * from this method for such cases in the release version of your parser.
+    * from this method for such cases in the release version of your equik.parser.
     */
    public String getMessage() {
       return super.getMessage();
