@@ -49,15 +49,15 @@ public class EMSyntaxTest {
 				"ObjectSomeValuesFrom(<http://www.example.com#hasChild> <http://www.example.com#Man>)");
 	}
 
-	//@Test
-	public void parseEpistemicRoleExpression() {
+	@Test
+	public void parseEpistemicConceptExpression() {
 		check("hasChild some (KnownConcept Man)",
 				"ObjectSomeValuesFrom(<http://www.example.com#hasChild> ObjectEpistemicConcept(<http://www.example.com#Man>))");
 	}
 
 	@Test
-	public void parseEpistemicConceptExpression() {
-		check("(KR hasChild) some Man",
+	public void parseEpistemicRoleExpression() {
+		check("(KnownRole hasChild) some Man",
 		"ObjectSomeValuesFrom(<http://www.example.com#hasChild> ObjectEpistemicConcept(<http://www.example.com#Man>))");
 	}
 
