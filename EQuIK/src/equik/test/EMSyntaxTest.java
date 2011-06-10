@@ -57,8 +57,8 @@ public class EMSyntaxTest {
 
 	@Test
 	public void parseEpistemicRoleExpression() {
-		check("(KnownRole hasChild) some Man",
-		"ObjectSomeValuesFrom(<http://www.example.com#hasChild> ObjectEpistemicConcept(<http://www.example.com#Man>))");
+		check("KnownRole(hasChild) some Man",
+		"ObjectSomeValuesFrom(EpistemicRole(<http://www.example.com#hasChild>) <http://www.example.com#Man>)");
 	}
 
 }

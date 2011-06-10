@@ -103,7 +103,7 @@ public class EMSyntaxEditorParser {
 
 	public static final String INVERSE = EMSyntax.INVERSE.toString();
 
-	public static final String KR = EMSyntax.INVERSE.toString();
+	public static final String KR = EMSyntax.KR.toString();
 
 	public static final String SOME = EMSyntax.SOME.toString();
 
