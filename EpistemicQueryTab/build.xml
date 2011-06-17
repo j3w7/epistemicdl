@@ -1,5 +1,5 @@
 <?xml version = "1.0" encoding = "utf-8"?>
-<project name = "DL Query project" default = "install" basedir = ".">    
+<project name = "EQuIK Query project" default = "install" basedir = ".">    
 
    <!-- 
         To run this build file set the environment variable
@@ -20,7 +20,7 @@
         This may be the only setting that the developer needs to
         change.
      -->
-   <property name = "plugin"          value = "org.coode.dlquery"/>
+   <property name = "plugin"          value = "de.fzi.equik.protege.querytab"/>
 
    
    <!-- 

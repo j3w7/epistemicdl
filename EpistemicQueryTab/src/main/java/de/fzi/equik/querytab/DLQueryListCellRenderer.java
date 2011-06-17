@@ -1,4 +1,4 @@
-package equik.protege.dlquery;
+package de.fzi.equik.querytab;
 
 import org.protege.editor.owl.OWLEditorKit;
 import org.protege.editor.owl.ui.renderer.OWLCellRenderer;

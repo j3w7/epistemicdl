@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Dlquery
-Bundle-SymbolicName: org.coode.dlquery;singleton:=true
+Bundle-Name: EQuIKQueryTab
+Bundle-SymbolicName: de.fzi.equik.querytab;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.protege.editor.core.plugin.DefaultPluginActivator

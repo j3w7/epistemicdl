@@ -1,4 +1,4 @@
-package equik.protege.dlquery;
+package de.fzi.equik.querytab;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

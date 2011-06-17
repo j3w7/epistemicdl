@@ -1,8 +1,6 @@
-package equik.protege.dlquery;
+package de.fzi.equik.querytab;
 
-import org.protege.editor.core.ui.list.MListItem;
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLObject;
+import org.protege.editor.core.ui.list.MListSectionHeader;
 /*
  * Copyright (C) 2007, University of Manchester
  *
@@ -33,52 +31,22 @@ import org.semanticweb.owlapi.model.OWLObject;
  * Bio-Health Informatics Group<br>
  * Date: 27-Feb-2007<br><br>
  */
-public class DLQueryResultsSectionItem implements MListItem {
+public class DLQueryResultsSection implements MListSectionHeader {
 
-    private OWLObject object;
-    private OWLAxiom  axiom;
+    private String label;
 
 
-    public DLQueryResultsSectionItem(OWLObject object, OWLAxiom axiom) {
-        this.object = object;
-        this.axiom  = axiom;
+    public DLQueryResultsSection(String label) {
+        this.label = label;
     }
 
 
-    public OWLObject getOWLObject() {
-        return object;
-    }
-    
-    public OWLAxiom getAxiom() {
-		return axiom;
-	}
-
-
-    public String toString() {
-        return object.toString();
+    public String getName() {
+        return label;
     }
 
 
-    public boolean isEditable() {
+    public boolean canAdd() {
         return false;
-    }
-
-
-    public void handleEdit() {
-    }
-
-
-    public boolean isDeleteable() {
-        return false;
-    }
-
-
-    public boolean handleDelete() {
-        return false;
-    }
-
-
-    public String getTooltip() {
-        return null;
     }
 }

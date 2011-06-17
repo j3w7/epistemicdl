@@ -1,4 +1,4 @@
-package equik.protege.dlquery;
+package de.fzi.equik.querytab;
 
 import java.util.HashSet;
 import java.util.Set;

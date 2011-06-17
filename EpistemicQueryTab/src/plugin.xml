@@ -2,9 +2,9 @@
 
 <plugin>
     
-    <extension id="DLQueryTab"
+    <extension id="EQuIKQueryTab"
                point="org.protege.editor.core.application.WorkspaceTab">
-        <label value="DL Query"/>
+        <label value="EQuIKQueryTab"/>
         <class value="org.protege.editor.owl.ui.OWLWorkspaceViewsTab"/>
         <editorKitId value="OWLEditorKit"/>
         <index value="Q"/>
@@ -14,7 +14,7 @@
     <extension id="OWLClassExpressionEditorViewComponent"
      		   point="org.protege.editor.core.application.ViewComponent">
         <label value="Query"/>
-        <class value="equik.protege.OWLClassExpressionEditorViewComponent"/>
+        <class value="de.fzi.equik.querytab.OWLClassExpressionEditorViewComponent"/>
         <headerColor value="@org.protege.classcolor"/>
     </extension>
 
