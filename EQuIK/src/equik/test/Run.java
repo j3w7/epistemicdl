@@ -10,6 +10,8 @@ import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLObjectPropertyExpression;
 
+import equik.core.model.EpistemicDataFactory;
+
 public class Run {
 
 	/**
@@ -17,6 +19,7 @@ public class Run {
 	 */
 	public static void main(String[] args) {
 		OWLDataFactory factory = OWLManager.getOWLDataFactory();
+		EpistemicDataFactory efactory = new EpistemicDataFactory(factory);
 		File file;
 		Testor testor1;
 
@@ -25,8 +28,8 @@ public class Run {
 
 		//		C1
 		OWLClassExpression c1 = factory.getOWLObjectSomeValuesFrom(hasWineDescriptor, wineDescriptor);
-		OWLClassExpression kWineDescriptor = factory.getOWLObjectEpistemicConcept(wineDescriptor);
-		OWLObjectPropertyExpression kHasWineDescriptor = factory.getOWLObjectEpistemicRole(hasWineDescriptor);
+		OWLClassExpression kWineDescriptor = efactory.getOWLObjectEpistemicConcept(wineDescriptor);
+		OWLObjectPropertyExpression kHasWineDescriptor = efactory.getOWLObjectEpistemicRole(hasWineDescriptor);
 		//		EC1
 		OWLClassExpression ec1 = factory.getOWLObjectSomeValuesFrom(kHasWineDescriptor, kWineDescriptor);
 		//		C2
@@ -39,8 +42,8 @@ public class Run {
 		OWLClassExpression c4tmp = factory.getOWLObjectSomeValuesFrom(madeFromFruit, wineGrape);
 		OWLClassExpression c3 = factory.getOWLObjectIntersectionOf(c1,c4tmp);
 		//		EC3
-		OWLObjectPropertyExpression kMadeFromFruit = factory.getOWLObjectEpistemicRole(madeFromFruit);
-		OWLClassExpression kWineGrape = factory.getOWLObjectEpistemicConcept(wineGrape);
+		OWLObjectPropertyExpression kMadeFromFruit = efactory.getOWLObjectEpistemicRole(madeFromFruit);
+		OWLClassExpression kWineGrape = efactory.getOWLObjectEpistemicConcept(wineGrape);
 		OWLClassExpression c3tmp = factory.getOWLObjectSomeValuesFrom(kMadeFromFruit, kWineGrape);
 		OWLClassExpression ec3 = factory.getOWLObjectIntersectionOf(ec1,c3tmp);
 		//		C4
@@ -52,9 +55,9 @@ public class Run {
 		OWLClassExpression tmpc4 = factory.getOWLObjectComplementOf(factory.getOWLObjectSomeValuesFrom(locatedIn, frenchRegion));
 		OWLClassExpression c4 = factory.getOWLObjectIntersectionOf(whiteWine,tmpc4);
 		//		EC4
-		OWLObjectPropertyExpression kLocatedIn = factory.getOWLObjectEpistemicRole(locatedIn);
-		OWLObjectPropertyExpression kHasMaker = factory.getOWLObjectEpistemicRole(hasMaker);
-		OWLClassExpression kWhiteWine = factory.getOWLObjectEpistemicConcept(whiteWine);
+		OWLObjectPropertyExpression kLocatedIn = efactory.getOWLObjectEpistemicRole(locatedIn);
+		OWLObjectPropertyExpression kHasMaker = efactory.getOWLObjectEpistemicRole(hasMaker);
+		OWLClassExpression kWhiteWine = efactory.getOWLObjectEpistemicConcept(whiteWine);
 		OWLClassExpression tmp = factory.getOWLObjectComplementOf(factory.getOWLObjectSomeValuesFrom(kLocatedIn, frenchRegion));
 		OWLClassExpression ec4 = factory.getOWLObjectIntersectionOf(kWhiteWine, tmp);
 		//		C5
@@ -71,8 +74,8 @@ public class Run {
 		OWLClassExpression d3 = factory.getOWLObjectComplementOf(factory.getOWLObjectSomeValuesFrom(hasSugar, cSweet));
 		OWLClassExpression c5 = factory.getOWLObjectIntersectionOf(wine,d1,d2,d3);
 		//		EC5
-		OWLClassExpression kWine = factory.getOWLObjectEpistemicConcept(wine);		
-		OWLObjectPropertyExpression kHasSugar = factory.getOWLObjectEpistemicRole(hasSugar);	
+		OWLClassExpression kWine = efactory.getOWLObjectEpistemicConcept(wine);		
+		OWLObjectPropertyExpression kHasSugar = efactory.getOWLObjectEpistemicRole(hasSugar);	
 		OWLClassExpression tmp1 = factory.getOWLObjectSomeValuesFrom(kHasSugar, cDry);
 		OWLClassExpression t1 = factory.getOWLObjectComplementOf(tmp1);
 		OWLClassExpression t2 = factory.getOWLObjectComplementOf(factory.getOWLObjectSomeValuesFrom(kHasSugar, cOffDry));
@@ -81,10 +84,10 @@ public class Run {
 		
 //		EC6
 		OWLObjectProperty adjRegion = factory.getOWLObjectProperty(IRI.create("http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#adjacentRegion"));
-		OWLObjectPropertyExpression kAdjRegion = factory.getOWLObjectEpistemicRole(adjRegion);
+		OWLObjectPropertyExpression kAdjRegion = efactory.getOWLObjectEpistemicRole(adjRegion);
 		OWLClassExpression ec6 = factory.getOWLObjectSomeValuesFrom(kLocatedIn, factory.getOWLObjectSomeValuesFrom(kAdjRegion, frenchRegion));
 		OWLObjectProperty producesWine = factory.getOWLObjectProperty(IRI.create("http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#producesWine"));
-		OWLObjectPropertyExpression kProducesWine = factory.getOWLObjectEpistemicRole(producesWine);
+		OWLObjectPropertyExpression kProducesWine = efactory.getOWLObjectEpistemicRole(producesWine);
 		
 		OWLClassExpression ec7  = factory.getOWLObjectSomeValuesFrom(kProducesWine, ec6);
 		

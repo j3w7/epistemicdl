@@ -3,8 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/aterm-java-1.6.jar"/>
-	<classpathentry kind="lib" path="lib/HermiT.jar"/>
-	<classpathentry kind="lib" path="lib/owlapi-bin.jar"/>
 	<classpathentry kind="lib" path="lib/pellet-cli.jar"/>
 	<classpathentry kind="lib" path="lib/pellet-core.jar"/>
 	<classpathentry kind="lib" path="lib/pellet-datatypes.jar"/>
@@ -21,5 +19,6 @@
 	<classpathentry kind="lib" path="lib/pellet-test.jar"/>
 	<classpathentry kind="lib" path="lib/servlet.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.semanticweb.owl.owlapi"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
