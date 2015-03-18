@@ -1,0 +1,1 @@
+It provides a way to use standard DL reasoner for checking epistemic entailment.
